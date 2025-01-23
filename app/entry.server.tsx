@@ -6,7 +6,6 @@
 
 import type { AppLoadContext, EntryContext } from "react-router";
 import { ServerRouter } from "react-router";
-import { isbot } from "isbot";
 import pkg from 'react-dom/server';
 const { renderToReadableStream } = pkg;
 
@@ -29,7 +28,6 @@ export default async function handleRequest(
     <ServerRouter
       context={reactRouterContext}
       url={request.url}
-      abortDelay={ABORT_DELAY}
     />,
     {
       signal: controller.signal,
@@ -44,10 +42,6 @@ export default async function handleRequest(
   );
 
   body.allReady.then(() => clearTimeout(timeoutId));
-
-  if (isbot(request.headers.get("user-agent") || "")) {
-    await body.allReady;
-  }
 
   responseHeaders.set("Content-Type", "text/html");
   return new Response(body, {
