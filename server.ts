@@ -6,9 +6,8 @@ import * as build from "./build/server"; // eslint-disable-line import/no-unreso
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 // const handleRemixRequest = createRequestHandler(build as any as ServerBuild);
-const requestHandler = createRequestHandler({
-  build
-});
+
+const requestHandler = createRequestHandler(() => import("virtual:react-router/server-build"), import.meta.env.MODE);
 
 export default {
   async fetch(request, env, ctx) {
