@@ -11,7 +11,12 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [
-    cloudflare({ persistState: false }),
+    cloudflare({
+      persistState: false,
+      viteEnvironment: {
+        name: "ssr"
+      },
+    }),
     reactRouter(),
     tsconfigPaths(),
   ],
