@@ -7,8 +7,7 @@ import * as build from "./build/server"; // eslint-disable-line import/no-unreso
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 // const handleRemixRequest = createRequestHandler(build as any as ServerBuild);
 const requestHandler = createRequestHandler({
-  build,
-  mode: import.meta.env.MODE,
+  build
 });
 
 export default {
