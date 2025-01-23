@@ -1,4 +1,5 @@
 node_modules
+dist
 
 /.wrangler
 /build
@@ -6,3 +7,4 @@ node_modules
 .dev.vars
 
 .wrangler
+.react-router/
