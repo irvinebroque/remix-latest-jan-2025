@@ -25,5 +25,6 @@ export default defineConfig({
   },
   build: {
     minify: true,
+    outDir: './build',
   },
 });
